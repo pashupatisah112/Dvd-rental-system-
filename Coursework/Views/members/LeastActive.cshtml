@@ -1,0 +1,58 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content">
+    <h2>Member's List</h2>
+    <p class="hvr-shutter-out-horizontal" style="padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("Issue New", "Create") <i class="fa fa-plus"></i></p>
+    <p class="hvr-shutter-out-horizontal" style="float:right;padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("See Least Active", "LeastActive") <i class="fa fa-plus"></i></p>
+    <table class="table">
+        <tr>
+            <th>
+                <label>First Name</label>
+            </th>
+            <th>
+                <label>Last Name</label>
+            </th>
+            <th>
+                <label>Address</label>
+            </th>
+            <th>
+                <label>Date Out</label>
+            </th>
+            <th>
+                <label>Dvd Title</label>
+            </th>
+            <th>
+                <label>Last Loan</label>
+            </th>
+        </tr>
+
+        @foreach (var item in ViewBag.member)
+        {
+            <tr>
+                <td>
+                    @item.member.first_name
+                </td>
+                <td>
+                    @item.member.last_name
+                </td>
+                <td>
+                    @item.member.address)
+                </td>
+                <td>
+                    @item.date_out
+                </td>
+                <td>
+                    @item.dvd.title
+                </td>
+                <td>
+                    3 days ago
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

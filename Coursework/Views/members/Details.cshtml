@@ -1,0 +1,93 @@
+﻿@model Coursework.member
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="content">
+    <h2>Member Details</h2>
+    <div class="col-md-3">
+        <img src="~/media/userProfile/ @Html.DisplayFor(model => model.profile)" class="img-responsive" style="width:100%;height:auto;" alt="Image Not Available">
+    </div>
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>
+                <label>First Name</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.first_name)
+            </dd>
+
+            <dt>
+                <label>Last Name</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.last_name)
+            </dd>
+
+            <dt>
+                <label>EMail Address</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email_address)
+            </dd>
+
+            <dt>
+                <label>Address</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
+
+            <dt>
+                <label>Phone</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.phone)
+            </dd>
+
+            <dt>
+                <label>Date of Birth</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dob)
+            </dd>
+
+            <dt>
+                <label>Password</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.password)
+            </dd>
+
+            <dt>
+                <label>Category</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.member_category.category_name)
+            </dd>
+
+            <dt>
+                <label>Roles</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.roles.role)
+            </dd>
+
+        </dl>
+    </div>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

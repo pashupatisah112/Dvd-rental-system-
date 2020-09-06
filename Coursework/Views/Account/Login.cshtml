@@ -1,0 +1,65 @@
+﻿@model Coursework.member
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="row">
+                <h2 style="margin-left:12px;">Login to your Account</h2>
+            </div>
+            <div class="col-md-5">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row">
+                        <span>Email Address</span>
+                        @Html.EditorFor(model => model.email_address, new { htmlAttributes = new { @class = "form-control", @type = "email", @required = "required", placeholder = "Enter your email" } })
+                        @Html.ValidationMessageFor(model => model.email_address, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group row">
+                        <span>Password</span>
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password", @required = "required", placeholder = "Enter password" } })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group row">
+                        <input type="submit" value="Login" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <h4 style="margin-top:-30px;">JOIN US FOR MORE</h4>
+                <div class="container_wrap" style="margin-top:-50px">
+                    <div class="callbacks_container">
+                        <ul class="rslides" id="slider">
+                            <li>
+                                <img src="~/Content/images/banner.jpg" class="img-responsive" alt="" />
+                                <div class="button">
+                                    <a href="#" class="hvr-shutter-out-horizontal">Latest Released</a>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/images/banner1.jpg" class="img-responsive" alt="" />
+                                <div class="button">
+                                    <a href="#" class="hvr-shutter-out-horizontal">Latest Released</a>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/images/banner2.jpg" class="img-responsive" alt="" />
+                                <div class="button">
+                                    <a href="#" class="hvr-shutter-out-horizontal">Latest Released</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+</div>
+
+

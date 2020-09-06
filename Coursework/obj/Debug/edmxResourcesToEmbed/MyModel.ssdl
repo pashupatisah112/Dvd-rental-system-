@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EverestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cast">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="15" />
+    <Property Name="last_name" Type="varchar" MaxLength="15" />
+    <Property Name="dob" Type="date" />
+    <Property Name="height" Type="varchar" MaxLength="10" />
+    <Property Name="age" Type="int" />
+    <Property Name="total_movies" Type="int" />
+    <Property Name="about" Type="text" />
+    <Property Name="profile" Type="text" />
+  </EntityType>
+  <EntityType Name="dvd">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="copy_number" Type="varchar" MaxLength="10" />
+    <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="released_date" Type="date" Nullable="false" />
+    <Property Name="genres_id" Type="tinyint" Nullable="false" />
+    <Property Name="stock" Type="int" Nullable="false" />
+    <Property Name="date_added" Type="date" Nullable="false" />
+    <Property Name="studio_id" Type="tinyint" Nullable="false" />
+    <Property Name="producer_id" Type="tinyint" />
+    <Property Name="cast_id" Type="tinyint" />
+    <Property Name="cover" Type="text" />
+  </EntityType>
+  <EntityType Name="Genres">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="genres" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="loan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_out" Type="date" Nullable="false" />
+    <Property Name="num_copy" Type="int" />
+    <Property Name="amount_paid" Type="int" Nullable="false" />
+    <Property Name="due" Type="int" />
+    <Property Name="date_returned" Type="date" />
+    <Property Name="penalty_charge" Type="int" />
+    <Property Name="dvd_id" Type="tinyint" />
+    <Property Name="member_id" Type="tinyint" />
+    <Property Name="loan_status_id" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="loan_status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="loan_status" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="email_address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="10" />
+    <Property Name="dob" Type="date" />
+    <Property Name="password" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="profile" Type="text" />
+    <Property Name="mem_Cat_Id" Type="tinyint" />
+    <Property Name="role_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="member_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="dvd_copy_limit" Type="int" Nullable="false" />
+    <Property Name="fine_per_day" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="producer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="dob" Type="date" Nullable="false" />
+    <Property Name="movies_produced" Type="int" Nullable="false" />
+    <Property Name="net_worth" Type="int" Nullable="false" />
+    <Property Name="about" Type="text" Nullable="false" />
+    <Property Name="profile" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="studio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="owner" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="founder" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="founded_date" Type="date" Nullable="false" />
+    <Property Name="headquarter" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="movies_produced" Type="int" Nullable="false" />
+    <Property Name="website" Type="text" Nullable="false" />
+    <Property Name="logo" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_dvd_cast">
+    <End Role="cast" Type="Self.cast" Multiplicity="0..1" />
+    <End Role="dvd" Type="Self.dvd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cast">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dvd">
+        <PropertyRef Name="cast_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dvd_genres">
+    <End Role="Genres" Type="Self.Genres" Multiplicity="1" />
+    <End Role="dvd" Type="Self.dvd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genres">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dvd">
+        <PropertyRef Name="genres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dvd_producer">
+    <End Role="producer" Type="Self.producer" Multiplicity="0..1" />
+    <End Role="dvd" Type="Self.dvd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dvd">
+        <PropertyRef Name="producer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dvd_studio">
+    <End Role="studio" Type="Self.studio" Multiplicity="1" />
+    <End Role="dvd" Type="Self.dvd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="studio">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dvd">
+        <PropertyRef Name="studio_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_member_member_category">
+    <End Role="member_category" Type="Self.member_category" Multiplicity="0..1" />
+    <End Role="member" Type="Self.member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="member_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="member">
+        <PropertyRef Name="mem_Cat_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_member_role">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="member" Type="Self.member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="member">
+        <PropertyRef Name="role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EverestModelStoreContainer">
+    <EntitySet Name="cast" EntityType="Self.cast" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dvd" EntityType="Self.dvd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genres" EntityType="Self.Genres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loan" EntityType="Self.loan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loan_status" EntityType="Self.loan_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="member_category" EntityType="Self.member_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="producer" EntityType="Self.producer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="studio" EntityType="Self.studio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dvd_cast" Association="Self.FK_dvd_cast">
+      <End Role="cast" EntitySet="cast" />
+      <End Role="dvd" EntitySet="dvd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dvd_genres" Association="Self.FK_dvd_genres">
+      <End Role="Genres" EntitySet="Genres" />
+      <End Role="dvd" EntitySet="dvd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dvd_producer" Association="Self.FK_dvd_producer">
+      <End Role="producer" EntitySet="producer" />
+      <End Role="dvd" EntitySet="dvd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dvd_studio" Association="Self.FK_dvd_studio">
+      <End Role="studio" EntitySet="studio" />
+      <End Role="dvd" EntitySet="dvd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_member_member_category" Association="Self.FK_member_member_category">
+      <End Role="member_category" EntitySet="member_category" />
+      <End Role="member" EntitySet="member" />
+    </AssociationSet>
+    <AssociationSet Name="FK_member_role" Association="Self.FK_member_role">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="member" EntitySet="member" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

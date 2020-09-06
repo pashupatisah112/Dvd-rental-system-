@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Coursework.member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content">
+    <h2>Member's List</h2>
+    <p class="hvr-shutter-out-horizontal" style="padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("Issue New", "Create") <i class="fa fa-plus"></i></p>
+    <p class="hvr-shutter-out-horizontal" style="float:right;padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("See Least Active", "LeastActive") <i class="fa fa-plus"></i></p>
+    <table class="table">
+        <tr>
+            <th>
+                <label>First Name</label>
+            </th>
+            <th>
+                <label></label>
+            </th>
+            <th>
+                <label>Email</label>
+            </th>
+            <th>
+                <label>Address</label>
+            </th>
+            <th>
+                <label>Phone</label>
+            </th>
+            <th>
+                <label>Date Of Birth</label>
+            </th>
+            <th>
+                <label>Membership</label>
+            </th>
+            <th>
+                <label>Copies on Loan</label>
+            </th>
+            <th>
+                <label>Stats</label>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.first_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.last_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.member_category.category_name)
+                </td>
+                <td>
+                    @{
+                        EverestDvdEntities db = new EverestDvdEntities();
+                        var v = from l in db.loan
+                                where l.member_id == item.id
+                                group l by l.member_id into copy
+
+                                select new
+                                {
+                                    dvd_copy = copy.Sum(pc => pc.num_copy)
+                                };
+
+                    }
+                    @foreach (var i in v)
+                    {
+                        @Html.DisplayFor(modelItem => i.dvd_copy)
+                    }
+                </td>
+                <td>
+
+                    @foreach (var i in v)
+                    {
+
+                        if (item.mem_Cat_Id == 7)
+                        {
+                            if (i.dvd_copy > 1)
+                            {
+                                <p>Too many loans</p>
+                            }
+                            else
+                            {
+                                <p>1-@i.dvd_copy left to Limit</p>
+                            }
+                        }
+                        else if (item.mem_Cat_Id == 8)
+                        {
+                            if (i.dvd_copy > 3)
+                            {
+                                <p>Too many loans</p>
+                            }
+                            else
+                            {
+                                <p>3-@i.dvd_copy left to Limit</p>
+                            }
+                        }
+                        else if (item.mem_Cat_Id == 9)
+                        {
+                            if (i.dvd_copy > 5)
+                            {
+                                <p>Too many loans</p>
+                            }
+                            else
+                            {
+                                <p>5-@i.dvd_copy left to Limit</p>
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

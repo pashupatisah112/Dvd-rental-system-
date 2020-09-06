@@ -1,0 +1,94 @@
+﻿@model Coursework.loan
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="content">
+<h2>Details</h2>
+
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+        <dt>
+            <label>Date Out</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_out)
+        </dd>
+        <dt>
+            <label>Copy Number</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_copy)
+        </dd>
+
+        <dt>
+            <label>Amount Paid</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount_paid)
+        </dd>
+
+        <dt>
+            <label>Due</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.due)
+        </dd>
+
+        <dt>
+            <label>Date Returned</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_returned)
+        </dd>
+
+        <dt>
+            <label>Penalty charge</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.penalty_charge)
+        </dd>
+
+        <dt>
+            <label>Mmber</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member_id)
+        </dd>
+
+        <dt>
+            <label>Status</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loan_status.loan_status1)
+        </dd>
+
+        <dt>
+            <label>Dvd Title</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dvd.title)
+        </dd>
+
+        </dl>
+    </div>
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+    </div>

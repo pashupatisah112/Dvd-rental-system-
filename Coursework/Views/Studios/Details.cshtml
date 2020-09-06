@@ -1,0 +1,80 @@
+﻿@model Coursework.studio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="content">
+    <h2>studio Details</h2>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <img src="~/media/studioImage/ @Html.DisplayFor(model => model.logo)" class="img-responsive" style="width:100%;height:auto;" alt="Image Not Available">
+    </div>
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.owner)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.owner)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.founder)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.founder)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.founded_date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.founded_date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.headquarter)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.headquarter)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.movies_produced)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.movies_produced)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.website)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.website)
+            </dd>
+
+        </dl>
+    </div>
+        
+   
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+

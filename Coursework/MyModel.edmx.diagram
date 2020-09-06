@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6c74a220c9d542769573b061efb62abe" Name="Diagram1">
+        <EntityTypeShape EntityType="EverestModel.cast" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.dvd" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.Genres" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.loan" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.loan_status" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.member" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.member_category" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.producer" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.roles" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.studio" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverestModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="EverestModel.FK_dvd_cast" ManuallyRouted="false" />
+        <AssociationConnector Association="EverestModel.FK_dvd_genres" ManuallyRouted="false" />
+        <AssociationConnector Association="EverestModel.FK_dvd_producer" ManuallyRouted="false" />
+        <AssociationConnector Association="EverestModel.FK_dvd_studio" ManuallyRouted="false" />
+        <AssociationConnector Association="EverestModel.FK_loan_dvd" ManuallyRouted="false" />
+        <AssociationConnector Association="EverestModel.FK_loan_member" ManuallyRouted="false" />
+        <AssociationConnector Association="EverestModel.FK_loan_status" ManuallyRouted="false" />
+        <AssociationConnector Association="EverestModel.FK_member_member_category" ManuallyRouted="false" />
+        <AssociationConnector Association="EverestModel.FK_member_role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

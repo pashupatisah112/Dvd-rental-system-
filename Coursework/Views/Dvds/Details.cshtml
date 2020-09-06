@@ -1,0 +1,87 @@
+﻿@model Coursework.dvd
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="content">
+    <h2>See details of dvd</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/media/dvdPoster/@Html.DisplayFor(model => model.cover)" class="img-responsive" alt="" style="width:100%;height:200px" />
+        </div>
+        <div class="col-md-8">
+            <dl class="dl-horizontal">
+                <dt>
+                    <label>Title</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.title)
+                </dd>
+
+                <dt>
+                    <label>Released Date</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.released_date)
+                </dd>
+
+                <dt>
+                    <label>Stock</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.stock)
+                </dd>
+
+                <dt>
+                    <label>Date Added</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_added)
+                </dd>
+
+                <dt>
+                    <label>First Name</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.cast.first_name)
+                </dd>
+
+                <dt>
+                    <label>Genres</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Genres.genres1)
+                </dd>
+
+                <dt>
+                    <label>Producer</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.producer.first_name)
+                </dd>
+
+                <dt>
+                    <label>Studio</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.studio.name)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

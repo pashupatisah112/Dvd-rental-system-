@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "ManagerHome";
+}
+
+<div class="content">
+        <div class="row" style="margin-bottom:20px;">
+            <div class="col-md-4">
+                <h4>Search using cast name here</h4>
+                @using (Html.BeginForm("ActorSearch", "Search", FormMethod.Post, new { enctype = "multipart/form-data"}))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBox("last_name", null, new { @class = "form-control" , @placeholder = "Enter cast's last name" })<br>
+                    @Html.CheckBox("stock", false)
+                    <label>Search dvd only if in stock</label>
+                    <input type="submit" value="Search" style="float:right">
+                }
+            </div>
+            <div class="col-md-4">
+                <h4>Search for dvds using user's name</h4>
+                @using (Html.BeginForm("MemberDvdLoanSearch", "Search", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBox("last_name", null, new { @class = "form-control",@placeholder="Enter user's last name" })<br>
+                    
+
+                    <input type="submit" value="Search" style="float:right">
+                }
+            </div>
+            <div class="col-md-4">
+                <h4>Search details using copy number</h4>
+                @using (Html.BeginForm("CopyNumberDetailSearch", "Search", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBox("copy_number", null, new { @class = "form-control", @placeholder = "Enter dvd's copy number" })<br>
+
+                    <input type="submit" value="Search" style="float:right">
+                }
+            </div>
+        </div>
+       
+
+        <div class="clearfix"> </div>
+        <div class="row">
+            <h1 style="margin-left:33%;text-decoration:underline">Manage contents here</h1>
+        </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-danger card" onclick="location.href='@Url.Action("Index", "Dvds")'">
+                <i class="glyphicon glyphicon-facetime-video"></i>
+                <p>Manage Dvds</p>
+            </button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-danger card" onclick="location.href='@Url.Action("Index", "loans")'">
+                <i class="glyphicon glyphicon-credit-card"></i>
+                <p>Manage Loan</p>
+            </button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-danger card" onclick="location.href='@Url.Action("Index", "Casts")'">
+                <span class="glyphicon glyphicon-star"></span>
+                <p>Manage Cast</p>
+            </button>
+        </div>
+    </div>
+    <div class="row" style="margin-top:20px;">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-danger card" onclick="location.href='@Url.Action("Index", "Producers")'">
+                <span class="glyphicon glyphicon-film"></span>
+                <p>Manage Producer</p>
+            </button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-danger card" onclick="location.href='@Url.Action("Index", "Studios")'">
+                <span class="glyphicon glyphicon-headphones"></span>
+                <p>Manage Studio</p>
+            </button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-danger card" onclick="location.href='@Url.Action("Index", "Members")'">
+                <span class="glyphicon glyphicon-user"></span>
+                <p>Manage User</p>
+            </button>
+        </div>
+    </div>
+</div>
+

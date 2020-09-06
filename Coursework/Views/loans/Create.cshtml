@@ -1,0 +1,85 @@
+﻿@model Coursework.loan
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="content">
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group row">
+            <label>No of copies issued</label>
+            @Html.EditorFor(model => model.num_copy, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+            @Html.ValidationMessageFor(model => model.num_copy, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label>Date out</label>
+                @Html.EditorFor(model => model.date_out, new { htmlAttributes = new { @class = "form-control",@type="date" } })
+                @Html.ValidationMessageFor(model => model.date_out, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>Amount paid</label>
+                @Html.EditorFor(model => model.amount_paid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.amount_paid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label>Due</label>
+                @Html.EditorFor(model => model.due, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.due, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>Date Returned</label>
+                @Html.EditorFor(model => model.date_returned, new { htmlAttributes = new { @class = "form-control",@type = "date" } })
+                @Html.ValidationMessageFor(model => model.date_returned, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label>Penalty Charge</label>
+                @Html.EditorFor(model => model.penalty_charge, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.penalty_charge, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>Dvd</label>
+                @Html.DropDownList("dvd_id", null,"Select Dvd", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.dvd_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label>Member</label>
+                @Html.DropDownList("member_id", null, "Select Member", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.member_id, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                <label>Status</label>
+                @Html.DropDownList("loan_status_id", null,"Select Loan status", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.loan_status_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    </div>

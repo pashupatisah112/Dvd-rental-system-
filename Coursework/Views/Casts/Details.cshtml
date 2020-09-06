@@ -1,0 +1,82 @@
+﻿@model Coursework.cast
+
+@{
+    ViewBag.Title = "Details";
+    EverestDvdEntities db = new EverestDvdEntities();
+    //var detail = db.cast.Where(c => c.id ==item.id);
+}
+
+<div class="content">
+    <h2 class="m_2">Details of Cast's</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-2">
+            <img src="~/media/castImage/@Html.DisplayFor(model => model.profile)"  class="img-responsive" style="width:100%;height:auto;">
+        </div>
+        <div class="col-md-8">
+            <dl class="dl-horizontal">
+                <dt>
+                    <label>First Name:</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.first_name)
+                </dd>
+
+                <dt>
+                    <label>LastName:</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.last_name)
+                </dd>
+
+                <dt>
+                    <label>Date of Birth:</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dob)
+                </dd>
+
+                <dt>
+                    <label>Height:</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.height)
+                </dd>
+
+                <dt>
+                    <label>Age:</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.age)
+                </dd>
+
+                <dt>
+                    <label>Total Movies:</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.total_movies)
+                </dd>
+
+                <dt>
+                    <label>About:</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.about)
+                </dd>
+            </dl>
+        </div>
+    </div>
+    
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

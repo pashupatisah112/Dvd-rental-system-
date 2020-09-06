@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content">
+    <div class="box_1">
+        <h1 class="m_2">List of Dvds</h1>
+        <div class="clearfix"> </div>
+    </div>
+    <p class="hvr-shutter-out-horizontal" style="padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("Add New", "Create") <i class="fa fa-plus"></i></p>
+    <p class="hvr-shutter-out-horizontal" style="float:right;padding:5px;color:green;margin:5px;">@Html.ActionLink("See Copies on Loan", "LoanCopy")
+<p class="hvr-shutter-out-horizontal" style="float:right;padding:5px;color:green;margin:5px;">@Html.ActionLink("See All", "Index")</p>
+    <table class="table">
+        <tr>
+            <th>
+                <span class="m_2">Copy Number</span>
+            </th>
+            <th>
+                <span class="m_2">Title</span>
+            </th>
+            <th>
+                <span class="m_2">Released Date</span>
+            </th>
+            
+            <th>
+                <span class="m_2">Date Added</span>
+            </th>
+            <th>
+                <span class="m_2">Status</span>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var old in ViewBag.dvd_older)
+        {
+            
+            <tr>
+                <td>
+                    @old.num_copy
+                </td>
+                <td>
+                    @old.dvd.title
+                </td>
+                <td>
+                    @old.dvd.released_date
+                </td>
+                <td>
+                    @old.dvd.date_added
+                </td>
+                <td>
+                    @old.loan_status.loan_status1
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = old.dvd_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = old.dvd_id })
+                </td>
+            </tr>
+
+        }
+
+    </table>
+    @Html.ActionLink("Go to Home", "ManagerHome", "Home")
+</div>
+

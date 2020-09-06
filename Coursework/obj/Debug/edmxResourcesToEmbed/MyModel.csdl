@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EverestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cast">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="DateTime" Precision="0" />
+    <Property Name="height" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="total_movies" Type="Int32" />
+    <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="dvd" Relationship="Self.FK_dvd_cast" FromRole="cast" ToRole="dvd" />
+  </EntityType>
+  <EntityType Name="dvd">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="copy_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="released_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="genres_id" Type="Byte" Nullable="false" />
+    <Property Name="stock" Type="Int32" Nullable="false" />
+    <Property Name="date_added" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="studio_id" Type="Byte" Nullable="false" />
+    <Property Name="producer_id" Type="Byte" />
+    <Property Name="cast_id" Type="Byte" />
+    <Property Name="cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cast" Relationship="Self.FK_dvd_cast" FromRole="dvd" ToRole="cast" />
+    <NavigationProperty Name="Genres" Relationship="Self.FK_dvd_genres" FromRole="dvd" ToRole="Genres" />
+    <NavigationProperty Name="producer" Relationship="Self.FK_dvd_producer" FromRole="dvd" ToRole="producer" />
+    <NavigationProperty Name="studio" Relationship="Self.FK_dvd_studio" FromRole="dvd" ToRole="studio" />
+    <NavigationProperty Name="loan" Relationship="Self.FK_loan_dvd" FromRole="dvd" ToRole="loan" />
+  </EntityType>
+  <EntityType Name="Genres">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="genres1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="dvd" Relationship="Self.FK_dvd_genres" FromRole="Genres" ToRole="dvd" />
+  </EntityType>
+  <EntityType Name="loan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_out" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="amount_paid" Type="Int32" Nullable="false" />
+    <Property Name="due" Type="Int32" />
+    <Property Name="date_returned" Type="DateTime" Precision="0" />
+    <Property Name="penalty_charge" Type="Int32" />
+    <Property Name="dvd_id" Type="Byte" />
+    <Property Name="member_id" Type="Byte" />
+    <Property Name="loan_status_id" Type="Byte" />
+    <NavigationProperty Name="dvd" Relationship="Self.FK_loan_dvd" FromRole="loan" ToRole="dvd" />
+    <NavigationProperty Name="member" Relationship="Self.FK_loan_member" FromRole="loan" ToRole="member" />
+    <NavigationProperty Name="loan_status" Relationship="Self.FK_loan_status" FromRole="loan" ToRole="loan_status" />
+    <Property Name="num_copy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="loan_status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="loan_status1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="loan" Relationship="Self.FK_loan_status" FromRole="loan_status" ToRole="loan" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="DateTime" Precision="0" />
+    <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="mem_Cat_Id" Type="Byte" />
+    <Property Name="role_Id" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="loan" Relationship="Self.FK_loan_member" FromRole="member" ToRole="loan" />
+    <NavigationProperty Name="member_category" Relationship="Self.FK_member_member_category" FromRole="member" ToRole="member_category" />
+    <NavigationProperty Name="roles" Relationship="Self.FK_member_role" FromRole="member" ToRole="roles" />
+  </EntityType>
+  <EntityType Name="member_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="member" Relationship="Self.FK_member_member_category" FromRole="member_category" ToRole="member" />
+    <Property Name="dvd_copy_limit" Type="Int32" Nullable="false" />
+    <Property Name="fine_per_day" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="producer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="movies_produced" Type="Int32" Nullable="false" />
+    <Property Name="net_worth" Type="Int32" Nullable="false" />
+    <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dvd" Relationship="Self.FK_dvd_producer" FromRole="producer" ToRole="dvd" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="member" Relationship="Self.FK_member_role" FromRole="roles" ToRole="member" />
+  </EntityType>
+  <EntityType Name="studio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="owner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="founder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="founded_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="headquarter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="movies_produced" Type="Int32" Nullable="false" />
+    <Property Name="website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dvd" Relationship="Self.FK_dvd_studio" FromRole="studio" ToRole="dvd" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dvd_cast">
+    <End Role="cast" Type="Self.cast" Multiplicity="0..1" />
+    <End Role="dvd" Type="Self.dvd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cast">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dvd">
+        <PropertyRef Name="cast_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dvd_genres">
+    <End Role="Genres" Type="Self.Genres" Multiplicity="1" />
+    <End Role="dvd" Type="Self.dvd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genres">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dvd">
+        <PropertyRef Name="genres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dvd_producer">
+    <End Role="producer" Type="Self.producer" Multiplicity="0..1" />
+    <End Role="dvd" Type="Self.dvd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dvd">
+        <PropertyRef Name="producer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dvd_studio">
+    <End Role="studio" Type="Self.studio" Multiplicity="1" />
+    <End Role="dvd" Type="Self.dvd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="studio">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dvd">
+        <PropertyRef Name="studio_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_loan_dvd">
+    <End Role="dvd" Type="Self.dvd" Multiplicity="0..1" />
+    <End Role="loan" Type="Self.loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dvd">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="loan">
+        <PropertyRef Name="dvd_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_loan_member">
+    <End Role="member" Type="Self.member" Multiplicity="0..1" />
+    <End Role="loan" Type="Self.loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="member">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="loan">
+        <PropertyRef Name="member_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_loan_status">
+    <End Role="loan_status" Type="Self.loan_status" Multiplicity="0..1" />
+    <End Role="loan" Type="Self.loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loan_status">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="loan">
+        <PropertyRef Name="loan_status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_member_member_category">
+    <End Role="member_category" Type="Self.member_category" Multiplicity="0..1" />
+    <End Role="member" Type="Self.member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="member_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="member">
+        <PropertyRef Name="mem_Cat_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_member_role">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="member" Type="Self.member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="member">
+        <PropertyRef Name="role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EverestDvdEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cast" EntityType="Self.cast" />
+    <EntitySet Name="dvd" EntityType="Self.dvd" />
+    <EntitySet Name="Genres" EntityType="Self.Genres" />
+    <EntitySet Name="loan" EntityType="Self.loan" />
+    <EntitySet Name="loan_status" EntityType="Self.loan_status" />
+    <EntitySet Name="member" EntityType="Self.member" />
+    <EntitySet Name="member_category" EntityType="Self.member_category" />
+    <EntitySet Name="producer" EntityType="Self.producer" />
+    <EntitySet Name="roles" EntityType="Self.roles" />
+    <EntitySet Name="studio" EntityType="Self.studio" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_dvd_cast" Association="Self.FK_dvd_cast">
+      <End Role="cast" EntitySet="cast" />
+      <End Role="dvd" EntitySet="dvd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dvd_genres" Association="Self.FK_dvd_genres">
+      <End Role="Genres" EntitySet="Genres" />
+      <End Role="dvd" EntitySet="dvd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dvd_producer" Association="Self.FK_dvd_producer">
+      <End Role="producer" EntitySet="producer" />
+      <End Role="dvd" EntitySet="dvd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dvd_studio" Association="Self.FK_dvd_studio">
+      <End Role="studio" EntitySet="studio" />
+      <End Role="dvd" EntitySet="dvd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_loan_dvd" Association="Self.FK_loan_dvd">
+      <End Role="dvd" EntitySet="dvd" />
+      <End Role="loan" EntitySet="loan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_loan_member" Association="Self.FK_loan_member">
+      <End Role="member" EntitySet="member" />
+      <End Role="loan" EntitySet="loan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_loan_status" Association="Self.FK_loan_status">
+      <End Role="loan_status" EntitySet="loan_status" />
+      <End Role="loan" EntitySet="loan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_member_member_category" Association="Self.FK_member_member_category">
+      <End Role="member_category" EntitySet="member_category" />
+      <End Role="member" EntitySet="member" />
+    </AssociationSet>
+    <AssociationSet Name="FK_member_role" Association="Self.FK_member_role">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="member" EntitySet="member" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

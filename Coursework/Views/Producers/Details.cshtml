@@ -1,0 +1,73 @@
+﻿@model Coursework.producer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="content">
+    <h4>producer</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/media/producerImage/ @Html.DisplayFor(model => model.profile)" class="img-responsive" style="width:100%;height:auto;" alt="Image Not Available">
+        </div>
+        <div class="col-md-9">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    <label>First Name</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.first_name)
+                </dd>
+
+                <dt>
+                    <label>Last Name</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.last_name)
+                </dd>
+
+                <dt>
+                    <label>Date of Birth</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dob)
+                </dd>
+
+                <dt>
+                    <label>Total Movies Produced</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.movies_produced)
+                </dd>
+
+                <dt>
+                    <label>Net Worth</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.net_worth)
+                </dd>
+
+                <dt>
+                    <label>About</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.about)
+                </dd>
+
+
+            </dl>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

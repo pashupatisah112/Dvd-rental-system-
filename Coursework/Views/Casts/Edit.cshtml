@@ -1,0 +1,84 @@
+﻿@model Coursework.cast
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="content">
+    <h2>Edit casts details here</h2>
+
+    @using (Html.BeginForm("Edit", "Casts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>cast</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <span>First Name</span>
+                    @Html.TextBoxFor(model => model.first_name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <span>Last Name</span>
+                    @Html.TextBoxFor(model => model.last_name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <span>Date of Birth</span>
+                    @Html.TextBoxFor(model => model.dob, new { type = "date", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.dob, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <span>Height</span>
+                    @Html.TextBoxFor(model => model.height, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.height, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <span>Age</span>
+                    @Html.TextBoxFor(model => model.age, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <span>Total Movies</span>
+                    @Html.TextBoxFor(model => model.total_movies, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.total_movies, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <span>Choose a Profile</span>
+                    @Html.TextBoxFor(model => model.profile, new { type = "file", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.profile, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <span>About</span>
+                    @Html.TextAreaFor(model => model.about, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.about, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <input type="submit" value="Add" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+

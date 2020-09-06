@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Coursework.producer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content">
+    <h2>List Of Producers</h2>
+    <p class="hvr-shutter-out-horizontal" style="padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("Add New", "Create") <i class="fa fa-plus"></i></p>
+
+    <table class="table">
+        <tr>
+            <th>
+                <span>First Name</span>
+            </th>
+            <th>
+                <span>Last Name</span>
+            </th>
+            <th>
+                <span>Total Movies Produced</span>
+            </th>
+            <th>
+                <span>Net Worth</span>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.first_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.last_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movies_produced)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.net_worth) billion USD
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+
+        }
+
+    </table>
+    @Html.ActionLink("Go to Home", "ManagerHome", "Home")
+</div>

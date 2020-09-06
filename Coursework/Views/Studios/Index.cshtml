@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Coursework.studio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content">
+    <h2>List of Studio</h2>
+    <p class="hvr-shutter-out-horizontal" style="padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("Add New", "Create") <i class="fa fa-plus"></i></p>
+
+    <table class="table">
+        <tr>
+            <th>
+                <span>Studio Name</span>
+            </th>
+            <th>
+                <span>Owner</span>
+            </th>
+            <th>
+                <span>Website</span>
+            </th>
+            <th>
+                <span>Logo</span>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.website)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.logo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

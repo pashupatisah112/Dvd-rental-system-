@@ -1,0 +1,47 @@
+﻿@model Coursework.dvd
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content">
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-md-4">
+            <h4>Search using cast name here</h4>
+            @using (Html.BeginForm("MemberActorSearch", "Search", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBox("last_name", null, new { @class = "form-control", @placeholder = "Enter cast's last name" })<br>
+                @Html.CheckBox("stock", false)
+                <label>Search dvd only if in stock</label>
+                <input type="submit" value="Search" style="float:right">
+            }
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="m_2">Movies Availabe in the Store</h1>
+    </div>
+    <div class="row">
+        @using (var context = new EverestDvdEntities())
+        {
+            var dvd = (from m in context.dvd select m).ToList();
+            foreach (var d in dvd)
+            {
+        <div class="col-md-2" style="padding:5px;">
+
+            <a href="@Url.Action("Details", "Dvds",new { id = d.id })">
+                <img src="~/media/dvdPoster/@d.cover" class="img-responsive" alt="" style="width:100%;height:200px" /> 
+                </a>
+
+                
+                
+        </div>
+
+            }
+        }
+    </div>
+
+    <div class="row">
+        <span>@Html.ActionLink("Back to Home", "ManagerHome", "Home")</span></li>
+    </div>
+</div>
+

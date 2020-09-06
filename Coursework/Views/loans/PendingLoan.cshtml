@@ -1,0 +1,81 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content">
+    <h2>List of Loans</h2>
+    <p class="hvr-shutter-out-horizontal" style="padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("Issue New", "Create") <i class="fa fa-plus"></i></p>
+    <p class="hvr-shutter-out-horizontal" style="float:right;padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("See All Loans", "Index") <i class="fa fa-plus"></i></p>
+    <div class="clearfix"> </div>
+    <div class="form-horizontal">
+        <table class="table">
+            <tr>
+                <th>
+                    <label>Date Out</label>
+                </th>
+                <th>
+                    <label>Amount Paid</label>
+                </th>
+                <th>
+                    <label>Due Amount</label>
+                </th>
+                <th>
+                    <label>Date Returned</label>
+                </th>
+                <th>
+                    <label>Penalty Charge</label>
+                </th>
+                <th>
+                    <label>Member</label>
+                </th>
+                <th>
+                    <label>Status</label>
+                </th>
+                <th>
+                    <label>Dvd Title</label>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in ViewBag.pending)
+            {
+                <tr>
+                    <td>
+                        @item.date_out
+                    </td>
+                    <td>
+                        @item.amount_paid
+                    </td>
+                    <td>
+                        @item.due
+                    </td>
+                    <td>
+                        @item.date_returned
+                    </td>
+                    <td>
+                        @item.penalty_charge
+                    </td>
+                    <td>
+                        @item.member.last_name
+                    </td>
+                    <td>
+                        @item.loan_status.loan_status1.
+                    </td>
+                    <td>
+                        @item.dvd.title
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @Html.ActionLink("Go to Home", "ManagerHome", "Home")
+    </div>
+</div>
+

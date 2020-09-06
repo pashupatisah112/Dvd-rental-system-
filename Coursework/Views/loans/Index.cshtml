@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Coursework.loan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content">
+    <h2>List of Loans</h2>
+    <p class="hvr-shutter-out-horizontal" style="padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("Issue New", "Create") <i class="fa fa-plus"></i></p>
+    <p class="hvr-shutter-out-horizontal" style="float:right;padding:5px;color:green;margin-bottom:3px;">@Html.ActionLink("See Pending Loans", "PendingLoan") <i class="fa fa-plus"></i></p>
+    <div class="clearfix"> </div>
+    <div class="form-horizontal">
+        <table class="table">
+            <tr>
+                <th>
+                    <label>Date Out</label>
+                </th>
+                <th>
+                    <label>Number of Copies</label>
+                </th>
+                <th>
+                    <label>Amount Paid</label>
+                </th>
+                <th>
+                    <label>Due Amount</label>
+                </th>
+                <th>
+                    <label>Date Returned</label>
+                </th>
+                <th>
+                    <label>Penalty Charge</label>
+                </th>
+                <th>
+                    <label>Member</label>
+                </th>
+                <th>
+                    <label>Status</label>
+                </th>
+                <th>
+                    <label>Dvd Title</label>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_out)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.num_copy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount_paid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.due)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_returned)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.penalty_charge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.member.last_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.loan_status.loan_status1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dvd.title)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+            }
+
+        </table>
+        @Html.ActionLink("Go to Home", "ManagerHome", "Home")
+    </div>
+</div>
+
